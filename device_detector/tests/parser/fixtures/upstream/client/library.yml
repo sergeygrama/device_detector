@@ -170,7 +170,7 @@
 -
   user_agent: RestSharp/106.2.1.0
   client:
-    type: desktop app
+    type: library
     name: RestSharp
     version: 106.2.1.0
 -
@@ -242,7 +242,7 @@
 -
   user_agent: BTWebClient/2020(19648)
   client:
-    type: p2p
+    type: library
     name: uTorrent
     version: ""
 -
@@ -701,12 +701,12 @@
     type: library
     name: Jaunt
     version: "1.5"
-#-
-#  user_agent: Android.LVLDM
-#  client:
-#    type: library
-#    name: Android License Verification Library
-#    version: ""
+-
+  user_agent: Android.LVLDM
+  client:
+    type: library
+    name: Android License Verification Library
+    version: ""
 -
   user_agent: Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/12.1.0 Chrome/106.0.5249.51 Electron/21.0.0 Safari/537.36
   client:
