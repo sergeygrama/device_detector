@@ -1,8 +1,36 @@
 !!set
+" suse": null
+"\uBD89\uC740\uBCC4": null
+' (linux mips': null
 ' ios': null
 ' ipad/': null
 ' iphone/': null
 ' samsung/': null
+' xbox': null
+'(xbox': null
+'deepin ': null
+'ios version ': null
+'ios version,': null
+'ios version;': null
+'ios/version ': null
+'ipados ': null
+'iphone os ': null
+'irix ': null
+'irix/': null
+'kepler ': null
+'linux ': null
+'linux:': null
+'news-os ': null
+'next ': null
+'omdroid ': null
+'omdroid/': null
+'roku; ap; ': null
+'roku; ui; ': null
+'staros ': null
+'staros/': null
+'ubuntu ': null
+'ultrix ': null
+'zorin os ': null
 (ios): null
 (next): null
 -ios: null
@@ -11,8 +39,17 @@
 /ipad/: null
 /iphone/: null
 /samsung/: null
-" suse": null
 /tclwebkit: null
+0 odd/: null
+1 odd/: null
+2 odd/: null
+3 odd/: null
+4 odd/: null
+5 odd/: null
+6 odd/: null
+7 odd/: null
+8 odd/: null
+9 odd/: null
 aeoa: null
 aeob: null
 aeoc: null
@@ -64,26 +101,15 @@ blackpanther os: null
 bmp: null
 bpod: null
 bravia: null
-brew: null
 brew mp: null
+brew: null
 brightsign/: null
 caixamagica: null
 captivenetworksupport: null
 castro: null
-0 odd/: null
-1 odd/: null
-2 odd/: null
-3 odd/: null
-4 odd/: null
-5 odd/: null
-6 odd/: null
-7 odd/: null
-8 odd/: null
-9 odd/: null
 chromebook: null
 cinnamon/: null
 clear-linux-os/: null
-midp2.0: null
 clearphone: null
 cloud phone: null
 com.apple.trustd: null
@@ -92,8 +118,8 @@ coolita os qjy: null
 cordova-amazon-fireos: null
 cosmote_my_mini_tab: null
 cpu iphone os: null
-cros x86_64: null
 cros aarch64: null
+cros x86_64: null
 cyanogenmod: null
 cygwin_95-: null
 cygwin_98-: null
@@ -101,9 +127,9 @@ cygwin_me-: null
 cygwin_nt-: null
 darwin: null
 debian/: null
-'deepin ': null
 deepin/: null
 doggcatcher,okhttp: null
+dorado wap-browser: null
 dragonfly: null
 dvkbuntu: null
 electrobsd: null
@@ -171,9 +197,6 @@ inferno: null
 instacast/: null
 instacasthd/: null
 intelx64 mac os x: null
-'ios version ': null
-'ios version,': null
-'ios version;': null
 ios,0: null
 ios,1: null
 ios,2: null
@@ -194,7 +217,6 @@ ios/6: null
 ios/7: null
 ios/8: null
 ios/9: null
-'ios/version ': null
 ios0: null
 ios1: null
 ios2: null
@@ -216,6 +238,24 @@ ios; 7: null
 ios; 8: null
 ios; 9: null
 ios; opera: null
+ipad 1: null
+ipad 2: null
+ipad 3: null
+ipad 4: null
+ipad 5: null
+ipad 6: null
+ipad 7: null
+ipad 8: null
+ipad 9: null
+ipad/1: null
+ipad/2: null
+ipad/3: null
+ipad/4: null
+ipad/5: null
+ipad/6: null
+ipad/7: null
+ipad/8: null
+ipad/9: null
 ipad1,: null
 ipad2,: null
 ipad3,: null
@@ -227,26 +267,7 @@ ipad8,: null
 ipad9,: null
 ipad; cpu ipad os: null
 ipad; cpu os: null
-ipad/1: null
-ipad/2: null
-ipad/3: null
-ipad/4: null
-ipad/5: null
-ipad/6: null
-ipad/7: null
-ipad/8: null
-ipad/9: null
-ipad 1: null
-ipad 2: null
-ipad 3: null
-ipad 4: null
-ipad 5: null
-ipad 6: null
-ipad 7: null
-ipad 8: null
-ipad 9: null
 ipados/: null
-'ipados ': null
 iph10,: null
 iph11,: null
 iph12,: null
@@ -257,10 +278,9 @@ iph16,: null
 iph17,: null
 iph18,: null
 iph19,: null
-'iphone os ': null
 iphone os,: null
-iphone os;: null
 iphone os/: null
+iphone os;: null
 iphone1,: null
 iphone10,: null
 iphone11,: null
@@ -304,8 +324,6 @@ iphoneos8: null
 iphoneos9: null
 iphoneos;: null
 ipod_touch/: null
-'irix ': null
-'irix/': null
 irix0: null
 irix1: null
 irix2: null
@@ -338,6 +356,7 @@ kali7: null
 kali8: null
 kali9: null
 kanotix: null
+kepler/: null
 kin.one: null
 kin.two: null
 kolibrios: null
@@ -349,9 +368,6 @@ librem 5: null
 lindowsos: null
 lineage_: null
 linspire: null
-'linux ': null
-opera tv store/: null
-opera tv/: null
 linux!: null
 linux": null
 linux#: null
@@ -377,7 +393,6 @@ linux6: null
 linux7: null
 linux8: null
 linux9: null
-'linux:': null
 linux;: null
 linuxos: null
 liri/: null
@@ -454,6 +469,7 @@ microsoft-wns/: null
 midp-1.0/cldc: null
 midp-2.0/cldc: null
 midp-2.1/cldc: null
+midp2.0: null
 mikrotik/: null
 mingw32: null
 mmp/: null
@@ -466,8 +482,6 @@ ms-office; msoffice: null
 msdw: null
 mtk: null
 netbsd: null
-'news-os ': null
-'next ': null
 nintendo 3ds: null
 nintendo ds: null
 nintendo switch: null
@@ -477,12 +491,11 @@ nokia: null
 nova; linux: null
 nucleus: null
 oculusbrowser: null
-'omdroid ': null
-'omdroid/': null
 openbsd: null
 openharmony: null
 openvms v: null
-' (linux mips': null
+opera tv store/: null
+opera tv/: null
 ordissimo: null
 os rosa; linux: null
 os/2: null
@@ -528,21 +541,20 @@ revengeos_x2: null
 rex; u;: null
 rhel: null
 rim tablet os: null
-risc os: null
 risc os-nc: null
+risc os: null
 risingos: null
 rocky/: null
 roku/: null
 roku4640x/: null
 roku4640x/dvp: null
 roku4640x/pluto: null
-'roku; ap; ': null
-'roku; ui; ': null
 rokubrowser/: null
 rokuos/: null
 rssradio/: null
 s60: null
 sailfish: null
+samsung;smarttv: null
 scientific/: null
 sdk_gphone64_arm64-userdebug: null
 seewoos x86_64: null
@@ -569,19 +581,17 @@ sm-r89: null
 sm-r9: null
 smart tv: null
 smart_tv: null
-samsung;smarttv: null
 smarttv_aft: null
 solaris: null
 sonos/: null
+spreadtrum: null
 standalone hmd: null
 star-blade os: null
-'staros ': null
-'staros/': null
 sunos: null
 syllable: null
-symbian: null
 symbian os: null
 symbian/: null
+symbian: null
 symbianos: null
 symbos: null
 tbrowser/2.0: null
@@ -618,11 +628,9 @@ tvos18: null
 tvos19: null
 tvos26: null
 tvos9: null
-'ubuntu ': null
 ubuntu-: null
 ubuntu/: null
 uclient-fetch: null
-'ultrix ': null
 unknown-linux-gnu: null
 vectorlinux: null
 vidaa/: null
@@ -701,16 +709,12 @@ win98: null
 windows: null
 winfenix: null
 winhttp: null
-winnt: null
 winnt 10.0: null
+winnt: null
 wophone: null
 wv-atv: null
 xblwp7: null
-' xbox': null
-'(xbox': null
 xiino: null
 yunos: null
 zeasn/: null
 zenwalk gnu linux: null
-'zorin os ': null
-"\uBD89\uC740\uBCC4": null

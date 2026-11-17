@@ -60,7 +60,15 @@ class BaseClientParser(Parser):
             self.ua_data['type'] = self.dtype()
 
         if custom_app_details := self.appdetails_data.get(self.name().lower()):
+            # Details keyed by app id are more specific than the ones keyed by
+            # app name, so they must not be overridden by the latter.
+            app_id = self.user_agent.split('/', 1)[0].strip().lower()
+            by_app_id = self.appdetails_data.get(app_id) if '.' in app_id else None
+
             self.ua_data |= custom_app_details
+
+            if by_app_id:
+                self.ua_data['type'] = by_app_id['type']
 
 
 class GenericClientParser(BaseClientParser):

@@ -300,6 +300,22 @@ class DeviceDetector:
                 except KeyError:
                     self.all_details['device'] = device_data
 
+            # All devices running VIDAA are assumed to be a tv
+            if self.os_name() == 'VIDAA':
+                device_data = {'type': DeviceType.TV}
+                try:
+                    self.all_details['device'] |= device_data
+                except KeyError:
+                    self.all_details['device'] = device_data
+
+            # Assume all devices running ThinOS are from Dell
+            if self.os_name() == 'ThinOS' and not self.device_brand():
+                device_data = {'brand': 'Dell'}
+                try:
+                    self.all_details['device'] |= device_data
+                except KeyError:
+                    self.all_details['device'] = device_data
+
         self.parsed = True
         DDCache['user_agents'][self.ua_hash] = self
         return self
@@ -380,6 +396,11 @@ class DeviceDetector:
                 if self.is_television():
                     self.all_details['device']['type'] = DeviceType.TV
                 return
+
+        # Devices running a known tv client are a tv even when no device parser
+        # matched, which is how upstream treats them.
+        if self.is_television():
+            self.all_details['device'] = {'type': DeviceType.TV}
 
     def parse_bot(self) -> None:
         """

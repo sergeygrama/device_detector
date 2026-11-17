@@ -46,6 +46,18 @@ def build_version(version_str: str, truncation: int = 1) -> str:
     return '.'.join(segments[:retain_segments])
 
 
+# Chrome reduces the model and OS version out of the UA, so they are restored
+# from client hints the same way the upstream PHP library does it.
+UA_CH_RESTORE_FRAGMENT = RegexLazyIgnore(
+    r'Android (?:1[0-7][.\d]*; (?:K(?: Build/|[;)])|[A-Za-z0-9]{10}; U;.+)|1[0-7]\)) AppleWebKit'
+)
+UA_CH_TELEGRAM_ANDROID = RegexLazyIgnore('Telegram-Android/')
+UA_CH_ANDROID_RESTORE = RegexLazyIgnore(r'Android (?:10[.\d]*; K|1[1-7])')
+UA_CH_DESKTOP_FRAGMENT = RegexLazyIgnore(r'(?:Desktop|PC)(?: (?:x(?:32|64)|WOW64))?;')
+UA_CH_LINUX_RESTORE = RegexLazyIgnore(r'X11; Linux x86_64')
+UA_CH_WINDOWS_RESTORE = RegexLazyIgnore(r'Windows NT 10\.0; Win64; x64')
+
+
 class Parser(RegexLoader):
     # Constant used as value for unknown browser / os
     UNKNOWN = 'UNK'
@@ -92,6 +104,36 @@ class Parser(RegexLoader):
         self.os_details = os_details or {}
         self.appdetails_data = app_pretty_names_types_data()
         self._is_ios_fragment: bool | None = None
+
+    def set_user_agent(self, ua: str) -> None:
+        self.user_agent = ua
+        self.user_agent_lower = ua.lower()
+
+    def restore_user_agent_from_client_hints(self) -> None:
+        """
+        Restore the device model and OS version that Chrome strips
+        out of the User Agent, taking them from client hints.
+        """
+        ch = self.client_hints
+        if not ch or not ch.model:
+            return
+
+        model = ch.model
+
+        if UA_CH_RESTORE_FRAGMENT.search(self.user_agent) and not UA_CH_TELEGRAM_ANDROID.search(
+            self.user_agent
+        ):
+            os_version = ch.platform_version or '10'
+            self.set_user_agent(
+                UA_CH_ANDROID_RESTORE.sub(lambda m: f'Android {os_version}; {model}', self.user_agent)
+            )
+
+        if not UA_CH_DESKTOP_FRAGMENT.search(self.user_agent):
+            return
+
+        ua = UA_CH_LINUX_RESTORE.sub(lambda m: f'X11; Linux x86_64; {model}', self.user_agent)
+        ua = UA_CH_WINDOWS_RESTORE.sub(lambda m: f'Windows NT 10.0; Win64; x64; {model}', ua)
+        self.set_user_agent(ua)
 
     def is_ios_fragment(self) -> bool:
         """

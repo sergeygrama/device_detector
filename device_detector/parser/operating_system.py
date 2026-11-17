@@ -98,6 +98,7 @@ class OS(Parser):
         return ''
 
     def _parse(self) -> None:
+        self.restore_user_agent_from_client_hints()
         super()._parse()
         if not self.ua_data:
             OSFragment(self.user_agent, self.client_hints).parse()
@@ -112,8 +113,8 @@ class OS(Parser):
         family_from_ua = os_from_ua.get('family') or ''
         version_from_ua = os_from_ua.get('version') or ''
 
-        if os_from_hints:
-            name = os_from_hints.get('name') or ''
+        if os_from_hints.get('name'):
+            name = os_from_hints['name']
             short = os_from_hints.get('short_name') or short_name_from_ua
             family = os_from_hints.get('family') or family_from_ua
             version = os_from_hints.get('version') or ''
@@ -126,6 +127,9 @@ class OS(Parser):
 
             if name == 'Windows' and version and version[0] == '0':
                 version = '' if version_from_ua == '10' else version_from_ua
+
+            if name == 'Puffin OS':
+                version = version_from_ua
 
             # If the OS name detected from client hints matches the OS family from user agent
             # but the os name is another, use the one from user agent, as it might be more detailed

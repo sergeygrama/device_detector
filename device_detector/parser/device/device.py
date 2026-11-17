@@ -13,7 +13,8 @@ EXCLUDED_DESKTOP_FRAGMENT = RegexLazy(
     BOUNDED_REGEX.format(
         'CE-HTML|'
         ' Mozilla/|Andr[o0]id|Tablet|Mobile|iPhone|Windows Phone|ricoh|OculusBrowser|'
-        'PicoBrowser|Lenovo|compatible; MSIE|Trident/|Tesla/|XBOX|FBMD/|ARM; ?([^)]+)'
+        'PicoBrowser|Lenovo|compatible; MSIE|Trident/|Tesla/|XBOX|FBMD/|ARM; ?([^)]+)|'
+        'Steam'
     )
 )
 ANDROID_MOBILE_FRAGMENT = RegexLazy(
@@ -44,7 +45,7 @@ OPERA_TV_FRAGMENT = RegexLazy(BOUNDED_REGEX.format('Opera TV Store| OMI/'))
 
 ENDSWITH_FIREFOX = RegexLazyIgnore(r'(Firefox|Iceweasel|Phoenix)/(?:\d+[.\d]+)$')
 UA_CLIENT_HINTS_FRAGMENT = RegexLazyIgnore(
-    r'Android (?:1[0-6][.\d]*; K(?: Build/|[;)])|1[0-6]\)) AppleWebKit'
+    r'Android (?:1[0-7][.\d]*; (?:K(?: Build/|[;)])|[A-Za-z0-9]{10}; U;.+)|1[0-7]\)) AppleWebKit'
 )
 TELEGRAM_ANDROID = RegexLazy('Telegram-Android/')
 
@@ -102,6 +103,7 @@ class Device(BaseDeviceParser):
         Loop through all brands of all device types trying to find
         a model. Returns the first device with model info.
         """
+        self.restore_user_agent_from_client_hints()
         if not (ac_matched := self.check_all_regexes()):  # noqa
             return
 
@@ -347,7 +349,9 @@ class Device(BaseDeviceParser):
         if device_from_puffin := self.check_puffin_device():
             return device_from_puffin
 
-        if default_dtype != DeviceType.TV and self.is_television(os_name):
+        excluded_from_tv = (DeviceType.TV, DeviceType.Wearable, DeviceType.Peripheral)
+        if default_dtype not in excluded_from_tv and fixture_dtype not in excluded_from_tv \
+                and self.is_television(os_name):
             return DeviceType.TV
 
         if default_dtype != DeviceType.Tablet and self.is_tablet():
